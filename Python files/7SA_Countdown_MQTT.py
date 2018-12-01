@@ -105,7 +105,7 @@ def countdown(msg_zahl):
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
 
-    client.subscribe("7-SA_Countdown")
+    client.subscribe("7-SA/Countdown")
 
 def on_message(client, userdata, msg):
 

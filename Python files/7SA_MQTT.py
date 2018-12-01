@@ -44,8 +44,6 @@ def n_to_s(n_p):
         time.sleep(0.001)
         GPIO.output(shift,0)
 
-    schieben()
-
 # Zahl anzeigen
 def show_number(msg_zahl):
 
@@ -65,13 +63,72 @@ def show_number(msg_zahl):
 
     n_to_s(n_a[int(zahl)])
 
+    schieben()
+
     time.sleep(1)
+
+# Countdown
+def countdown(msg_zahl):
+
+    # ausschalten
+    n_to_s(n_a[10])
+    n_to_s(n_a[10])
+
+    schieben()
+
+    start = str(msg_zahl)
+    if int(start) > 99:
+        start = "99"
+
+    # Countdown starten
+    for i in range(int(start)+1):
+
+        zahl = int(start) - i
+
+        if len(str(zahl)) == 1:
+             zahl = "0" + str(zahl)
+
+             n_to_s(n_a[int(zahl[1])])
+             n_to_s(n_a[0])
+
+        elif len(str(start)) == 2:
+            zahl = str(zahl)
+
+            n_to_s(n_a[int(zahl[1])])
+            n_to_s(n_a[int(zahl[0])])
+
+        schieben()
+
+        time.sleep(0.99)
+
+    # blinken
+    for i in range(2):
+
+        n_to_s(n_a[10])
+        n_to_s(n_a[10])
+
+        schieben())
+
+        time.sleep(0.4)
+
+        n_to_s(n_a[0])
+        n_to_s(n_a[0])
+
+        schieben()
+
+        time.sleep(0.4)
+
+    # ausschalten
+    n_to_s(n_a[10])
+    n_to_s(n_a[10])
+
+    schieben()
 
 # MQTT
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
 
-    client.subscribe("7-SA/Zahl")
+    client.subscribe("7-SA/#")
 
 def on_message(client, userdata, msg):
 
@@ -80,7 +137,10 @@ def on_message(client, userdata, msg):
     for i in range(msg_len):
         message = message + str(msg.payload)[2+i]
 
-    show_number(message)
+    if msg.topic == "7-SA/Zahl":
+        show_number(message)
+    elif msg.topic == "7-SA/Countdown":
+        countdown(message)
 
 client = mqtt.Client()
 client.on_connect = on_connect
