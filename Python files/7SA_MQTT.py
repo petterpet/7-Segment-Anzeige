@@ -61,11 +61,10 @@ def show_number(msg_zahl):
     elif zahl == "a":
         zahl = "10"
 
-    n_to_s(n_a[int(zahl)])
+    if zahl in range(0, 12):
+        n _to_s(n_a[int(zahl)])
 
     schieben()
-
-    time.sleep(1)
 
 # Countdown
 def countdown(msg_zahl):

@@ -34,7 +34,7 @@ def schieben():
     GPIO.output(schieben,1)
     time.sleep(0.001)
     GPIO.output(schieben,0)
-    
+
 # Eine Zahl ins Schieberegister
 def n_to_s(n_p):
     for i in range(8):
@@ -53,7 +53,7 @@ print("Zum Beenden Strg+C drückn! \n")
 
 try:
     while True:
-        print("Geben Sie die Zahl ein, die auf die 7-Segment-Anzeige geschrieben werden soll!")
+        print("Geben Sie die Zahl ein, die auf die 7-Segment-Anzeige geschrieben werden soll (0-9)!")
         print("Für den Punkt geben Sie bitte 'p' ein!")
         print("Zum Ausschalten 'a'!")
         zahl = input("Ihre Zahl: ")
@@ -63,15 +63,13 @@ try:
         elif zahl == "a":
             zahl = "10"
 
-        # Funktionsaufruf
-        n_to_s(n_a[int(zahl)])
+        if zahl in range(0, 12):
+            n_to_s(n_a[int(zahl)])
 
-        print()
-        print("Ihre Zahl wird nun angezeigt! \n")
+            print()
+            print("Ihre Zahl wird nun angezeigt! \n")
 
         time.sleep(1)
 
 except KeyboardInterrupt:
     GPIO.cleanup()
-        
-        

@@ -1,6 +1,6 @@
 # Initialisierung
 import time
-import sys 
+import sys
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
@@ -35,7 +35,7 @@ def schieben():
     GPIO.output(schieben,1)
     time.sleep(0.001)
     GPIO.output(schieben,0)
-    
+
 # Eine Zahl ins Schieberegister
 def n_to_s(n_p):
     for i in range(8):
@@ -59,10 +59,9 @@ if zahl == "p":
 elif zahl == "a":
     zahl = "10"
 
-n_to_s(n_a[int(zahl)])
+if zahl in range(0, 12):
+    n_to_s(n_a[int(zahl)])
 
-time.sleep(1)
+time.sleep(5)
 
 GPIO.cleanup()
-        
-        

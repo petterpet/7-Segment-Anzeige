@@ -63,9 +63,8 @@ def show_number(msg_zahl):
     elif zahl == "a":
         zahl = "10"
 
-    n_to_s(n_a[int(zahl)])
-
-    time.sleep(1)
+    if zahl in range(0, 12):
+        n_to_s(n_a[int(zahl)])
 
 # MQTT
 def on_connect(client, userdata, flags, rc):

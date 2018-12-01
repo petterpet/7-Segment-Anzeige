@@ -1,0 +1,107 @@
+[
+    {
+        "id": "ae1cbef7.14403",
+        "type": "ui_text_input",
+        "z": "dc50810.d77128",
+        "name": "",
+        "label": "7SA Countdown",
+        "group": "b04884f.2163478",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "number",
+        "delay": "0",
+        "topic": "",
+        "x": 118,
+        "y": 186,
+        "wires": [
+            [
+                "11205a2d.164726"
+            ]
+        ]
+    },
+    {
+        "id": "11205a2d.164726",
+        "type": "mqtt out",
+        "z": "dc50810.d77128",
+        "name": "",
+        "topic": "7-SA/Countdown",
+        "qos": "",
+        "retain": "",
+        "broker": "1c984b86.f20774",
+        "x": 389,
+        "y": 186,
+        "wires": []
+    },
+    {
+        "id": "93053b1.b91e2c8",
+        "type": "ui_text_input",
+        "z": "dc50810.d77128",
+        "name": "",
+        "label": "7SA Zahl",
+        "group": "b04884f.2163478",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "number",
+        "delay": "0",
+        "topic": "",
+        "x": 94,
+        "y": 232,
+        "wires": [
+            [
+                "cc77a400.aba398"
+            ]
+        ]
+    },
+    {
+        "id": "cc77a400.aba398",
+        "type": "mqtt out",
+        "z": "dc50810.d77128",
+        "name": "",
+        "topic": "7-SA/Zahl",
+        "qos": "",
+        "retain": "",
+        "broker": "1c984b86.f20774",
+        "x": 355,
+        "y": 232,
+        "wires": []
+    },
+    {
+        "id": "b04884f.2163478",
+        "type": "ui_group",
+        "z": "",
+        "name": "7-Segment-Anzeige",
+        "tab": "8ca006fa.bf68d8",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "1c984b86.f20774",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "8ca006fa.bf68d8",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Steuerung",
+        "icon": "dashboard"
+    }
+]
