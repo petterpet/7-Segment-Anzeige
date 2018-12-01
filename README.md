@@ -4,7 +4,7 @@ Die in diesem Repository enthaltenen Dateien ermöglichen das Ansteuern von zwei
 
 Entweder kann eine einzelne Zahl angezeigt werden oder ein Countdown von maximal 99 abwärts.
 
-Die Ansteuerung erfolgt über einen Raaspberry Pi mit Python und es gibt jeweils drei Möglichkeiten:
+Die Ansteuerung erfolgt über einen Raspberry Pi mit Python und es gibt drei Möglichkeiten:
   * Benutzereingabe im Python-Fenster
   * Parameter beim Start über die Shell
   * Mitteilung des Wertes über MQTT
