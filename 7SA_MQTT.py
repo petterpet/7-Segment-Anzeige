@@ -31,7 +31,7 @@ dot = "00000001"
 n_a = [n_0,n_1,n_2,n_3,n_4,n_5,n_6,n_7,n_8,n_9,aus,dot]
 
 # schieben
-def schieben():
+def doSchieben():
     GPIO.output(schieben,1)
     time.sleep(0.001)
     GPIO.output(schieben,0)
@@ -51,7 +51,7 @@ def show_number(msg_zahl):
     n_to_s(n_a[10])
     n_to_s(n_a[10])
 
-    schieben()
+    doSchieben()
 
     # anzeigen
     zahl = str(msg_zahl)
@@ -61,10 +61,12 @@ def show_number(msg_zahl):
     elif zahl == "a":
         zahl = "10"
 
+    zahl = int(zahl)
+    
     if zahl in range(0, 12):
-        n _to_s(n_a[int(zahl)])
+        n_to_s(n_a[int(zahl)])
 
-    schieben()
+    doSchieben()
 
 # Countdown
 def countdown(msg_zahl):
@@ -73,7 +75,7 @@ def countdown(msg_zahl):
     n_to_s(n_a[10])
     n_to_s(n_a[10])
 
-    schieben()
+    doSchieben()
 
     start = str(msg_zahl)
     if int(start) > 99:
@@ -96,7 +98,7 @@ def countdown(msg_zahl):
             n_to_s(n_a[int(zahl[1])])
             n_to_s(n_a[int(zahl[0])])
 
-        schieben()
+        doSchieben()
 
         time.sleep(0.99)
 
@@ -106,14 +108,14 @@ def countdown(msg_zahl):
         n_to_s(n_a[10])
         n_to_s(n_a[10])
 
-        schieben())
+        doSchieben()
 
         time.sleep(0.4)
 
         n_to_s(n_a[0])
         n_to_s(n_a[0])
 
-        schieben()
+        doSchieben()
 
         time.sleep(0.4)
 
@@ -121,7 +123,7 @@ def countdown(msg_zahl):
     n_to_s(n_a[10])
     n_to_s(n_a[10])
 
-    schieben()
+    doSchieben()
 
 # MQTT
 def on_connect(client, userdata, flags, rc):

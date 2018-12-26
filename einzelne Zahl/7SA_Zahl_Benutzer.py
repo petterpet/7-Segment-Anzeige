@@ -30,7 +30,7 @@ dot = "00000001"
 n_a = [n_0,n_1,n_2,n_3,n_4,n_5,n_6,n_7,n_8,n_9,aus,dot]
 
 # schieben
-def schieben():
+def doSchieben():
     GPIO.output(schieben,1)
     time.sleep(0.001)
     GPIO.output(schieben,0)
@@ -43,7 +43,7 @@ def n_to_s(n_p):
         time.sleep(0.001)
         GPIO.output(shift,0)
 
-    schieben()
+    doSchieben()
 
 # Prgrammstart (Eine 7-Segment-Anzeige)
 
@@ -63,6 +63,8 @@ try:
         elif zahl == "a":
             zahl = "10"
 
+        zahl = int(zahl)
+        
         if zahl in range(0, 12):
             n_to_s(n_a[int(zahl)])
 

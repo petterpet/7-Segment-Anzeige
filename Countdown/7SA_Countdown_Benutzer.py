@@ -38,14 +38,14 @@ def n_to_s(n_p):
         GPIO.output(shift,0)
 
 # schieben
-def schieben():
+def doSchieben():
     GPIO.output(schieben,1)
     time.sleep(0.001)
     GPIO.output(schieben,0)
 
 # Prgrammstart (Zwei 7-Segment-Anzeigen)
 
-# Anweisung für den Benutzer
+# Anweisung fuer den Benutzer
 print("Dieses Programm erzeugt einen Countdown auf zwei 7-Segment-Anzeigen! \n")
 
 try:
@@ -55,7 +55,7 @@ try:
             start = "99"
             print("Startzahl zu hoch!")
             print("Start ab 99!")
-            
+
         # Countdown starten
         for i in range(int(start)+1):
 
@@ -75,7 +75,7 @@ try:
                 n_to_s(n_a[int(zahl[1])])
                 n_to_s(n_a[int(zahl[0])])
 
-            schieben()
+            doSchieben()
 
             # Terminal Ausgabe
             print(int(zahl))
@@ -84,24 +84,24 @@ try:
 
         # blinken
         for i in range(2):
-            
-            n_to_s(n_a[10])
-            n_to_s(n_a[10])
-        
-            schieben()
 
-            time.sleep(0.4)
-            
-            n_to_s(n_a[0])
-            n_to_s(n_a[0])
-        
-            schieben()
+            n_to_s(n_a[10])
+            n_to_s(n_a[10])
+
+            doSchieben()
 
             time.sleep(0.4)
 
-        print("Der Countdown ist abgelaufen! \n")    
+            n_to_s(n_a[0])
+            n_to_s(n_a[0])
+
+            doSchieben()
+
+            time.sleep(0.4)
+
+        print("Der Countdown ist abgelaufen! \n")
 
         time.sleep(1)
-        
+
 except KeyboardInterrupt:
     GPIO.cleanup()

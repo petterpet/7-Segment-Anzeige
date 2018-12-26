@@ -39,7 +39,7 @@ def n_to_s(n_p):
         GPIO.output(shift,0)
 
 # schieben
-def schieben():
+def doSchieben():
     GPIO.output(schieben,1)
     time.sleep(0.001)
     GPIO.output(schieben,0)
@@ -51,7 +51,7 @@ def countdown(msg_zahl):
     n_to_s(n_a[10])
     n_to_s(n_a[10])
 
-    schieben()
+    doSchieben()
 
     start = str(msg_zahl)
     if int(start) > 99:
@@ -74,7 +74,7 @@ def countdown(msg_zahl):
             n_to_s(n_a[int(zahl[1])])
             n_to_s(n_a[int(zahl[0])])
 
-        schieben()
+        doSchieben()
 
         time.sleep(0.99)
 
@@ -84,14 +84,14 @@ def countdown(msg_zahl):
         n_to_s(n_a[10])
         n_to_s(n_a[10])
 
-        schieben())
+        doSchieben()
 
         time.sleep(0.4)
 
         n_to_s(n_a[0])
         n_to_s(n_a[0])
 
-        schieben()
+        doSchieben()
 
         time.sleep(0.4)
 
@@ -99,7 +99,7 @@ def countdown(msg_zahl):
     n_to_s(n_a[10])
     n_to_s(n_a[10])
 
-    schieben()
+    doSchieben()
 
 # MQTT
 def on_connect(client, userdata, flags, rc):

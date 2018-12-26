@@ -14,7 +14,7 @@ GPIO.setup(levelinput,GPIO.OUT,initial=False)
 GPIO.setup(schieben,GPIO.OUT,initial=False)
 GPIO.setup(shift,GPIO.OUT,initial=False)
 
-# Zahlen
+# Zahle
 n_0 = "01111110"
 n_1 = "00010010"
 n_2 = "10111100"
@@ -30,12 +30,6 @@ dot = "00000001"
 
 n_a = [n_0,n_1,n_2,n_3,n_4,n_5,n_6,n_7,n_8,n_9,aus,dot]
 
-# schieben
-def schieben():
-    GPIO.output(schieben,1)
-    time.sleep(0.001)
-    GPIO.output(schieben,0)
-
 # Eine Zahl ins Schieberegister
 def n_to_s(n_p):
     for i in range(8):
@@ -44,24 +38,62 @@ def n_to_s(n_p):
         time.sleep(0.001)
         GPIO.output(shift,0)
 
-    schieben()
+# schieben
+def doSchieben():
+    GPIO.output(schieben,1)
+    time.sleep(0.001)
+    GPIO.output(schieben,0)
 
-# Prgrammstart (Eine 7-Segment-Anzeige)
+# Prgrammstart (Zwei 7-Segment-Anzeigen)
 
 # ausschalten
 n_to_s(n_a[10])
 n_to_s(n_a[10])
 
-zahl = str(sys.argv[1])
+doSchieben()
 
-if zahl == "p":
-    zahl = "11"
-elif zahl == "a":
-    zahl = "10"
+start = str(sys.argv[1])
+if int(start) > 99:
+    start = "99"
 
-if zahl in range(0, 12):
-    n_to_s(n_a[int(zahl)])
+# Countdown starten
+for i in range(int(start)+1):
 
-time.sleep(5)
+    zahl = int(start) - i
+
+    if len(str(zahl)) == 1:
+         zahl = "0" + str(zahl)
+
+         n_to_s(n_a[int(zahl[1])])
+         n_to_s(n_a[0])
+
+    elif len(str(start)) == 2:
+        zahl = str(zahl)
+
+        n_to_s(n_a[int(zahl[1])])
+        n_to_s(n_a[int(zahl[0])])
+
+    doSchieben()
+
+    time.sleep(0.99)
+
+# blinken
+for i in range(2):
+
+    n_to_s(n_a[10])
+    n_to_s(n_a[10])
+
+    doSchieben()
+
+    time.sleep(0.4)
+
+    n_to_s(n_a[0])
+    n_to_s(n_a[0])
+
+    doSchieben()
+
+    time.sleep(0.4)
+
+time.sleep(1)
 
 GPIO.cleanup()
